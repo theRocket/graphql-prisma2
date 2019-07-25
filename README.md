@@ -1,4 +1,5 @@
 # GraphQL Apollo Server Example
+Forked from [PhotonJS examples on Github](https://github.com/prisma/photonjs/tree/master/examples/typescript/graphql-apollo-server)
 
 This example shows how to implement a **GraphQL server with TypeScript** based on  [Photon JS](https://photonjs.prisma.io/), [apollo-server](https://www.apollographql.com/docs/apollo-server/) and [GraphQL Nexus](https://nexus.js.org/).
 
@@ -9,7 +10,7 @@ This example shows how to implement a **GraphQL server with TypeScript** based o
 Clone the repository:
 
 ```sh
-git clone git@github.com:prisma/photonjs.git
+git clone git://gitlab.saturna.com/dev/graphql-prisma2
 ```
 
 Install Node dependencies:
