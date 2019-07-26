@@ -1,8 +1,14 @@
 datasource db {
-  provider = "mysql"
-  url      = "mysql://root:Fr!cti0nl3ss@localhost:3306/graphql_prisma2"
+  provider = "sqlite"
+  url      = "file:dev.db"
   default  = true
 }
+
+// datasource db {
+//   enabled  = env("MYSQL_URL")
+//   provider = "mysql"
+//   url      = env("MYSQL_URL")
+// }
 
 generator photon {
   provider = "photonjs"

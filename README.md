@@ -30,7 +30,12 @@ npm install -g prisma2
 
 ### 3. Set up database
 
-This example uses a MySQL database running locally (localhost) on port 3306. To set up your database, run:
+This example can use a MySQL database running locally (localhost) on port 3306, uncomment the datasource block in schema.prisma, and touch/source a .dev_env file at the root of the project with this text:
+```sh
+export MYSQL_URL=mysql://rootuser:PWORD@localhost:3306/graphql_prisma2
+```
+
+To initialize your database with the provided schema, run:
 
 ```sh
 prisma2 lift save --name 'init'
