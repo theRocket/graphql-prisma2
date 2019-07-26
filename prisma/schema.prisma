@@ -1,6 +1,6 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:dev.db"
+  provider = "mysql"
+  url      = "mysql://root:Fr!cti0nl3ss@localhost:3306/graphql_prisma2"
   default  = true
 }
 
@@ -12,19 +12,72 @@ generator nexus_prisma {
   provider = "nexus-prisma"
 }
 
-model User {
+model Sponsor {
   id    String  @default(cuid()) @id @unique
-  email String  @unique
-  name  String?
-  posts Post[]
+  name  String
+  code String
+  addresses Address[]
+  contacts Contact[]
+  sponsored_plans Plan[]
+}
+model Plan {
+  id    String  @default(cuid()) @id @unique
+  name String  @unique
+  plan_code String @unique
+  adopted_date DateTime @default(now())
+  bin_nscc String?
+  ownership_type OwnershipType
+  participants Person[]
 }
 
-model Post {
+model Person {
   id        String   @default(cuid()) @id @unique
+  salutation String?
+  name_first String
+  name_last String
+  name_middle String
+  email String @unique
+  tax_id String
+  date_of_birth DateTime
+  cip_score Int?
+  cip_date DateTime?
+  marital_status String
+  citizenship COUNTRY
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  published Boolean
-  title     String
-  content   String?
-  author    User?
+}
+
+model Contact {
+  id        String   @default(cuid()) @id @unique
+  name String
+  phone String
+  email String
+}
+
+model Address {
+  id        String   @default(cuid()) @id @unique
+  addressline1 String
+  addressline2 String?
+  city String
+  state String
+  postal String
+  country String
+}
+
+model OwnershipType {
+  id        String   @default(cuid()) @id @unique
+  label String
+}
+
+enum CURRENCY {
+  CAD
+  CHF
+  EUR
+  JPY
+  USD
+  ZAR
+}
+
+enum COUNTRY {
+  US
 }
